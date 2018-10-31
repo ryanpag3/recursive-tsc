@@ -1,0 +1,17 @@
+{
+  "name": "recursive-tsc",
+  "version": "1.0.0",
+  "description": "Recursively build TypeScript projects.",
+  "main": "dist/recursive-tsc.js",
+  "repository": "-",
+  "author": "Ryan Page",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "recursive-tsc": "dist/bin/command.js"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.5"
+  }
+}

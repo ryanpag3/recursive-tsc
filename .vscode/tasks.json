@@ -1,0 +1,27 @@
+{
+    "version" : "2.0.0",
+    "tasks" : [
+        {
+            "label" : "recursive-tsc",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": "build",
+            "presentation" : {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "build",
+            "dependsOn": [
+                "recursive-tsc"
+            ],
+            "group" : {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
