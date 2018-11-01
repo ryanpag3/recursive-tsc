@@ -1,6 +1,6 @@
 {
   "name": "recursive-tsc",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Recursively build TypeScript projects.",
   "main": "dist/recursive-tsc.js",
   "repository": "-",
@@ -10,6 +10,7 @@
   "bin": {
     "recursive-tsc": "dist/bin/command.js"
   },
+  "files": ["dist/"],
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
