@@ -13,7 +13,7 @@ export default class RecursiveTSC {
      * build all typescript projects recursively relative to the specified path.
      * @param {string} relativePath
      */
-    recursiveBuildRelative (relativePath: string) {
+    recursiveBuildRelative(relativePath: string) {
         const absolute = path.resolve(relativePath);
 
         if (!fs.existsSync(absolute)) {
@@ -28,11 +28,11 @@ export default class RecursiveTSC {
      * build all projects recursively in specified absolute path
      * @param {string} absolutePath
      */
-    async recursiveBuild (absolutePath: string) {
+    async recursiveBuild(absolutePath: string) {
         const tsconfPath = path.join(absolutePath, 'tsconfig.json');
         if (fs.existsSync(tsconfPath))
             await this.tsc(tsconfPath);
-        
+
         for (let dir of this.getDirectories(absolutePath))
             await this.recursiveBuild(dir);
     }
@@ -41,17 +41,24 @@ export default class RecursiveTSC {
      * build the project at the current path
      * @param {string} p the path to build in
      */
-    async tsc (p: string) {
+    async tsc(p: string) {
         console.log(`Compiling project ${p}`);
-        const { stderr } = await exec(`tsc --p ${p}`);
+        let stderr;
+        try {
+            let res = await exec(`tsc --p ${p}`);
+            stderr = res.stderr;
+        } catch (e) {
+            console.log(e);
+            process.exit(1);
+        }
         if (stderr && stderr !== '') console.log(stderr);
-    }   
+    }
 
     /**
      * get all directories inside path, excluding node_modules
      * @param {string} p the path to get directories inside
      */
-    getDirectories (p: string) {
+    getDirectories(p: string) {
         let dirs = fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory());
         dirs = dirs.filter(f => {
             for (let blacklistedDir of blacklist) {
