@@ -11,7 +11,11 @@
     "recursive-tsc": "dist/bin/command.js"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.5"
-  }
+  },
+  "dependencies": {}
 }

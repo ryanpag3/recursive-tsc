@@ -6,7 +6,6 @@
       "noImplicitAny": false,
       "sourceMap": true,
       "outDir": "dist",
-      "resolveJsonModule": true,
       "esModuleInterop": true,
       "rootDir": ".",
       "types" : ["node", "mocha", "chai"]
